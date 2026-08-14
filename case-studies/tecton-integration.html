@@ -1,0 +1,224 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="How Tim Presley led Sperry's translation of an enterprise React and MUI design system into a maintainable Angular and PrimeNG architecture.">
+  <meta name="theme-color" content="#fbfaf7">
+  <meta property="og:title" content="Translating Tecton for Sperry — Tim Presley">
+  <meta property="og:description" content="Enterprise design-system translation across frameworks, product lines, and governance constraints.">
+  <meta property="og:type" content="article">
+  <title>Translating Tecton for Sperry — Tim Presley</title>
+  <link rel="icon" href="../assets/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="../styles.css">
+  <script src="../script.js" defer></script>
+</head>
+<body class="case-page">
+  <a class="skip-link" href="#case-content">Skip to case study</a>
+  <header class="site-header" data-header>
+    <a class="wordmark" href="../index.html" aria-label="Tim Presley, home"><span class="wordmark-full">Tim Presley</span><span class="wordmark-short" aria-hidden="true">TP</span><span class="wordmark-dot" aria-hidden="true">.</span></a>
+    <button class="menu-button" type="button" aria-expanded="false" aria-controls="site-nav" data-menu-button>
+      <span class="sr-only">Open navigation</span><span></span><span></span>
+    </button>
+    <nav class="site-nav" id="site-nav" aria-label="Primary navigation" data-nav>
+      <a href="../index.html#work">Work</a>
+      <a href="../index.html#about">About</a>
+      <a href="../index.html#resume">Resume</a>
+      <a href="../index.html#contact">Contact</a>
+    </nav>
+  </header>
+
+  <main class="case-main" id="case-content">
+    <header class="case-hero">
+      <div data-reveal>
+        <p class="eyebrow">Design systems · Enterprise integration</p>
+        <h1>Translating Tecton <em>for Sperry.</em></h1>
+      </div>
+      <div class="case-hero-summary" data-reveal>
+        <p>Adapting an enterprise design system without breaking the products, tools, and teams it was intended to unify.</p>
+        <span class="case-status">Working integration · Ongoing</span>
+      </div>
+    </header>
+
+    <figure class="case-visual" data-reveal>
+      <div class="architecture-map" aria-label="Tecton foundations branching into React MUI and Angular PrimeNG framework paths">
+        <div class="architecture-source">Tecton foundations</div>
+        <div class="architecture-path">
+          <small>Landmark expression</small>
+          <span>React semantic layer</span>
+          <span>MUI components</span>
+        </div>
+        <div class="architecture-path sperry">
+          <small>Sperry translation</small>
+          <span>Foundation bridge</span>
+          <span>PrimeNG semantic + component tokens</span>
+        </div>
+      </div>
+    </figure>
+    <div class="notice"><strong>Public-safe reconstruction.</strong> This diagram explains the integration model without reproducing proprietary libraries or internal screens.</div>
+
+    <dl class="case-facts">
+      <div class="case-fact"><dt>Role</dt><dd>Head of UX, Sperry Drilling</dd></div>
+      <div class="case-fact"><dt>Scope</dt><dd>Design architecture and cross-PSL implementation strategy</dd></div>
+      <div class="case-fact"><dt>Partners</dt><dd>Sperry UX and engineering, Landmark, Argo-created assets</dd></div>
+      <div class="case-fact"><dt>Environment</dt><dd>Angular, PrimeNG, React, MUI, Storybook, Figma</dd></div>
+    </dl>
+
+    <div class="case-layout">
+      <aside class="case-toc" aria-label="Case study sections">
+        <nav>
+          <p>In this study</p>
+          <a href="#context">Context</a>
+          <a href="#constraint">Constraint</a>
+          <a href="#decisions">Key decisions</a>
+          <a href="#interface">Interface work</a>
+          <a href="#outcome">Outcome</a>
+          <a href="#reflection">Reflection</a>
+        </nav>
+      </aside>
+
+      <article class="case-copy">
+        <section id="context">
+          <p class="eyebrow">The business context</p>
+          <h2>An enterprise mandate met a multi-framework reality.</h2>
+          <p class="lead">Tecton was funded as an enterprise design system for Halliburton’s product service lines. Its initial design and delivery, led through Landmark with Argo Design, centered on a React and MUI implementation.</p>
+          <p>Sperry’s development teams use Angular and PrimeNG. The challenge was not whether to align with Tecton; it was how to preserve its enterprise foundation without forcing a mismatched framework implementation onto existing products.</p>
+          <p>The inherited model included framework-independent foundations, a semantic React library, an MUI-oriented Figma library, and a later Storybook implementation with React plus a smaller PrimeNG subset.</p>
+          <div class="callout"><p>Enterprise consistency did not require identical code. It required a stable contract between shared foundations and framework-specific implementations.</p></div>
+        </section>
+
+        <section id="constraint">
+          <p class="eyebrow">The constraint</p>
+          <h2>Alignment could not come at the cost of compatibility.</h2>
+          <p>Flattening component variables directly onto foundation colors would have changed the relationships existing Sperry Figma files relied on. The Storybook PrimeNG implementation also used wrappers that, after review with development leadership, did not fit Sperry’s intended application architecture.</p>
+          <p>Organizational infrastructure compounded the technical problem. Each product service line operated in a separate Figma organization while enterprise procurement remained underway. Shared publishing, updates, contribution rights, and release communication were still evolving.</p>
+          <ul>
+            <li><strong>Framework mismatch:</strong> React and MUI could not serve as Angular implementation source.</li>
+            <li><strong>Existing consumers:</strong> Design files depended on stable component-variable relationships.</li>
+            <li><strong>Distribution limits:</strong> Separate Figma organizations restricted shared library management.</li>
+            <li><strong>Governance ambiguity:</strong> Multiple PSLs needed to integrate against a changing source.</li>
+          </ul>
+        </section>
+
+        <section id="decisions">
+          <p class="eyebrow">What I did</p>
+          <h2>Built a translation layer, not a competing system.</h2>
+          <ol class="decision-list">
+            <li><div><strong>Separated foundation from framework.</strong><span>I treated Tecton Foundations as the enterprise contract and React/MUI as one expression of it.</span></div></li>
+            <li><div><strong>Preserved component semantics.</strong><span>I kept PrimeNG component-variable bindings rather than flattening them onto foundation values.</span></div></li>
+            <li><div><strong>Created a visible bridge.</strong><span>A Sperry mirror of Tecton Foundations made upstream changes identifiable, reviewable, and controlled.</span></div></li>
+            <li><div><strong>Aligned design with delivered tokens.</strong><span>I mirrored the Storybook JSON structure into Figma collections and connected PrimeNG components through semantic aliases.</span></div></li>
+            <li><div><strong>Made architecture a joint decision.</strong><span>I evaluated wrapper-based adoption with the development lead and selected an approach that matched how Angular products would actually be maintained.</span></div></li>
+            <li><div><strong>Kept cross-PSL dialogue outcome-focused.</strong><span>Discussions centered on shared foundations, traceable updates, framework support, and a viable path to broader participation.</span></div></li>
+          </ol>
+        </section>
+
+        <section id="interface">
+          <p class="eyebrow">Selected interface work</p>
+          <h2>What the translation produces in practice.</h2>
+          <p>The integration work is visible in more than a token diagram. It creates a PrimeNG-aligned component environment where designers can inspect the theme, work with familiar component semantics, and compose application surfaces that remain connected to the enterprise foundation.</p>
+
+          <div class="interface-gallery">
+            <figure class="interface-figure">
+              <div class="ui-window">
+                <div class="ui-window-bar">
+                  <span class="ui-window-dots" aria-hidden="true"><i></i><i></i><i></i></span>
+                  <span>Component workspace</span>
+                  <span class="ui-window-mode">Light theme</span>
+                </div>
+                <div class="ui-layout ui-layout-ds">
+                  <aside class="ui-sidebar">
+                    <strong>Foundation</strong>
+                    <span class="is-active">Components</span>
+                    <span>Semantic tokens</span>
+                    <span>Patterns</span>
+                    <span>Accessibility</span>
+                  </aside>
+                  <div class="ui-workspace">
+                    <div class="ui-page-head">
+                      <div><small>FORM CONTROLS</small><b>Input and selection</b></div>
+                      <span class="ui-control-button">Inspect tokens</span>
+                    </div>
+                    <div class="ui-component-grid">
+                      <div class="ui-component-card">
+                        <small>TEXT INPUT</small>
+                        <label>Project name</label>
+                        <div class="fake-input">Orion planning workspace</div>
+                        <em>Component → form field → surface</em>
+                      </div>
+                      <div class="ui-component-card">
+                        <small>SELECT</small>
+                        <label>Service stage</label>
+                        <div class="fake-input">Planning <b>⌄</b></div>
+                        <em>Component aliases preserved</em>
+                      </div>
+                      <div class="ui-component-card ui-component-actions">
+                        <small>ACTIONS</small>
+                        <div><span class="fake-button primary">Continue</span><span class="fake-button">Save draft</span></div>
+                        <em>PrimeNG behavior · Tecton theme</em>
+                      </div>
+                      <div class="ui-component-card">
+                        <small>STATUS</small>
+                        <div class="status-row"><span class="fake-status good">Ready</span><span class="fake-status warn">Review</span></div>
+                        <em>Semantic state tokens</em>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <figcaption><strong>PrimeNG component workspace</strong><span>A reconstructed example showing component semantics preserved while visual properties inherit from Tecton-aligned tokens.</span></figcaption>
+            </figure>
+
+            <figure class="interface-figure interface-figure-split">
+              <div class="ui-token-inspector">
+                <div class="ui-mini-heading"><small>VARIABLE TRACE</small><b>Button / primary / background</b></div>
+                <div class="token-trace">
+                  <span>Component</span><i></i><span>Semantic</span><i></i><span>Bridge</span><i></i><span>Foundation</span>
+                </div>
+                <code>action.primary → color.brand.strong → tecton.azure.600</code>
+              </div>
+              <div class="ui-theme-preview">
+                <div class="theme-preview-nav"><b>Operational workspace</b><span>Overview&nbsp;&nbsp; Activity&nbsp;&nbsp; Reports</span></div>
+                <div class="theme-preview-body">
+                  <div class="theme-kpi"><small>Active work</small><b>14</b><em>2 need review</em></div>
+                  <div class="theme-bars"><i></i><i></i><i></i><i></i><i></i></div>
+                </div>
+              </div>
+              <figcaption><strong>Traceability and composition</strong><span>The bridge keeps an individual UI decision explainable from application component back to enterprise foundation.</span></figcaption>
+            </figure>
+          </div>
+          <p class="interface-disclosure">Representative reconstruction using fictional content. It demonstrates the interaction and token architecture without reproducing proprietary components or internal applications.</p>
+        </section>
+
+        <section id="outcome">
+          <p class="eyebrow">Outcome</p>
+          <h2>A working Sperry path into Tecton.</h2>
+          <p>The integration established a PrimeNG-aligned Figma architecture that preserves component-level meaning while remaining traceable to Tecton foundations and Storybook tokens.</p>
+          <div class="evidence-grid">
+            <div class="evidence-card"><strong>1</strong><span>Controlled bridge between enterprise foundations and Sperry implementation</span></div>
+            <div class="evidence-card"><strong>3 layers</strong><span>Foundation, semantic, and component relationships preserved</span></div>
+            <div class="evidence-card"><strong>Angular</strong><span>Framework fit for Sperry’s production ecosystem</span></div>
+            <div class="evidence-card"><strong>Ongoing</strong><span>Enterprise distribution and governance remain active work</span></div>
+          </div>
+          <p>The result should not be overstated. Figma Enterprise migration, complete PrimeNG parity, cross-PSL contribution rights, and sustainable upstream synchronization are still in progress. The value of the work is a credible integration architecture—not a claim that enterprise adoption is complete.</p>
+        </section>
+
+        <section class="reflection" id="reflection">
+          <p class="eyebrow">What I would do differently</p>
+          <h2>Define the operating model before asking each PSL to integrate.</h2>
+          <p>I would establish a representative cross-PSL governance group earlier to define what is fixed, what can be extended, how frameworks are supported, and how changes are versioned and communicated. That would move debate from individual implementation choices into an agreed decision framework.</p>
+        </section>
+      </article>
+    </div>
+
+    <a class="next-case" href="design-of-service.html">
+      <div><span>Next case study</span><strong>Digital Design of Service</strong></div>
+      <b aria-hidden="true">↗</b>
+    </a>
+  </main>
+
+  <footer class="site-footer">
+    <p>© <span data-year>2026</span> Tim Presley</p><p>Head of UX · Enterprise systems</p><a href="../index.html">Return home</a>
+  </footer>
+</body>
+</html>
